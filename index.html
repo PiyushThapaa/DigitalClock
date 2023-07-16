@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      .container {
+        border: 2px solid black;
+        width: 40%;
+        height: 437px;
+        margin: auto;
+        margin-top: 59px;
+        background-color: black;
+      }
+      #time{
+        font-size: 119px;
+        font-weight: bold;
+        color: white;
+      }
+      .day-date{
+        color: white;
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <center><h1 style="color: aqua;">Digital Clock</h1></center>
+      <hr />
+      <center><div id="time"></div>
+    <div id="day" class="day-date"></div>
+<div id="date" class="day-date"></div></center>
+    </div>
+    <script>
+      setInterval(()=>{
+        let time = new Date();
+        let sec = time.getSeconds();
+        let min = time.getMinutes();
+        let hr = time.getHours();
+        let date = time.getDate();
+        let month = time.getMonth();
+        let year = time.getFullYear();
+        let day = time.getDay();
+        let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        document.getElementById('time').innerHTML = `<i>${hr}:${min}:${sec}</i>`
+        if (sec<10) {
+        document.getElementById('time').innerHTML = `<i>${hr}:${min}:0${sec}</i>`
+      }
+      document.getElementById('day').innerHTML = `<p>${days[day]}</p>`
+      document.getElementById('date').innerHTML = `<p>${date}-${months[month]}-${year}</p>`
+      },1000)
+    </script>
+  </body>
+</html>
